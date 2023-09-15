@@ -4,8 +4,11 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TaskController;
 use App\Models\Task;
 
-Route::resource('tasks', TaskController::class);
+Route::get('/', function () {
+    return redirect()->route('tasks.index');
+});
 
+Route::resource('tasks', TaskController::class);
 
 Route::put('tasks/{task}/complete', function(Task $task) {
     $task->complete();
